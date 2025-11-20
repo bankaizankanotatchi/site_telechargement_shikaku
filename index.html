@@ -3,27 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Télécharger l'application</title>
+    <title>Shikaku - Le jeu de stratégie ultime</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { text-align: center; font-family: Arial; padding-top: 40px; }
-        a.button {
-            padding: 15px 25px;
-            background: #4CAF50;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0033 0%, #2d0052 50%, #0a0015 100%);
             color: white;
-            font-size: 20px;
+            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(45deg, #9c27b0, #e040fb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(156, 39, 176, 0.7);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #e040fb, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.5px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .text-section {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #e040fb, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .highlight {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .carousel-section {
+            flex: 1;
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            padding: 25px;
+            background: rgba(45, 0, 82, 0.7);
+            border: 2px solid #9c27b0;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .slide-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #00d4ff;
+            text-align: center;
+        }
+
+        .slide-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #00d4ff;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(156, 39, 176, 0.7);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(156, 39, 176, 1);
+        }
+
+        .prev {
+            left: 8px;
+        }
+
+        .next {
+            right: 8px;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #9c27b0, #7b1fa2);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 10px;
-            display: inline-block;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.6);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .feature i {
+            color: #00d4ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 12px 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Media Queries pour les petits téléphones */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+            
+            .main-content {
+                flex-direction: column;
+                gap: 20px;
+                padding: 5px 0;
+            }
+            
+            .text-section {
+                padding-right: 0;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .carousel-section {
+                height: 300px;
+            }
+            
+            .carousel-slide {
+                padding: 20px;
+            }
+            
+            .slide-icon {
+                font-size: 30px;
+                margin-bottom: 12px;
+            }
+            
+            .slide-title {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            
+            .slide-content {
+                font-size: 0.9rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .download-btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+            
+            footer {
+                padding: 10px 0;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .carousel-section {
+                height: 280px;
+            }
+            
+            .carousel-slide {
+                padding: 15px;
+            }
+            
+            .slide-icon {
+                font-size: 28px;
+            }
+            
+            .slide-title {
+                font-size: 1.1rem;
+            }
+            
+            .slide-content {
+                font-size: 0.85rem;
+            }
+            
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            
+            .download-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .carousel-section {
+                height: 260px;
+            }
+            
+            .carousel-slide {
+                padding: 12px;
+            }
+            
+            .slide-title {
+                font-size: 1rem;
+            }
+            
+            .slide-content {
+                font-size: 0.8rem;
+            }
+            
+            .download-btn {
+                padding: 8px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-grid-2"></i>
+                </div>
+                <div class="logo-text">SHIKAKU</div>
+            </div>
+        </header>
 
-    <h1>Mon Application Flutter</h1>
-    <p>Cliquez ci-dessous pour télécharger l'application :</p>
+        <div class="main-content">
+            <div class="text-section">
+                <h1>OÙ LA STRATÉGIE RENCONTRE LA RAPIDITÉ</h1>
+                <p class="subtitle">
+                    Shikaku est un jeu de stratégie captivant où vous devez former le plus de carrés possible en connectant des points sur une grille. 
+                    <span class="highlight">Affrontez l'IA, défiez vos amis</span> et devenez le maître du Shikaku !
+                </p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-robot"></i>
+                        <span>IA avec 3 niveaux</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Multijoueur en ligne</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-trophy"></i>
+                        <span>Classement mondial</span>
+                    </div>
+                </div>
+            </div>
 
-    <!-- ⚠️ Mets ici le lien vers ton APK -->
-    <a class="button" href="shikaku.apk" download>Télécharger l'APK</a>
+            <div class="carousel-section">
+                <div class="carousel">
+                    <div class="carousel-slide">
+                        <div class="slide-icon">🎯</div>
+                        <h3 class="slide-title">OBJECTIF DU JEU</h3>
+                        <p class="slide-content">Former le plus de carrés possible en connectant les points sur la grille. Chaque carré complet rapporte 1 point.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-icon">🔄</div>
+                        <h3 class="slide-title">TOUR PAR TOUR</h3>
+                        <p class="slide-content">Les joueurs bleu et rouge jouent alternativement. Chaque joueur place un point par tour.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-icon">📐</div>
+                        <h3 class="slide-title">FORMATION DES CARRÉS</h3>
+                        <p class="slide-content">Un carré se forme lorsque 4 points sont connectés pour former un carré parfait. Le joueur qui complète le carré le marque.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-icon">⭐</div>
+                        <h3 class="slide-title">SCORING</h3>
+                        <p class="slide-content">Chaque carré complet rapporte 1 point. Si un mouvement complète plusieurs carrés, le joueur marque tous les carrés formés.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-icon">⏱️</div>
+                        <h3 class="slide-title">TIMERS</h3>
+                        <p class="slide-content">15 secondes par coup • 3 minutes par partie • 3 tours manqués = défaite automatique</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-icon">🏆</div>
+                        <h3 class="slide-title">VICTOIRE</h3>
+                        <p class="slide-content">Le joueur avec le plus de points à la fin de la partie gagne. En cas d'égalité, c'est un match nul.</p>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-nav">
+                    <div class="nav-dot active"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="download-section">
+            <a href="shikaku.apk" class="download-btn" download>
+                <i class="fas fa-download"></i>
+                TÉLÉCHARGER L'APPLICATION
+            </a>
+        </div>
+
+        <footer>
+            <p>© <span id="current-year"></span> Équipe Shikaku - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const carouselSection = document.querySelector('.carousel-section');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let autoScrollInterval;
+            
+            // Fonction pour mettre à jour le carrousel
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Mettre à jour les points de navigation
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // Fonction pour démarrer le défilement automatique
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateCarousel();
+                }, 5000);
+            }
+            
+            // Fonction pour arrêter le défilement automatique
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+            
+            // Événements pour les boutons précédent/suivant
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            });
+            
+            // Événements pour les points de navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Arrêter le défilement automatique quand la souris est sur le carrousel
+            carouselSection.addEventListener('mouseenter', stopAutoScroll);
+            carouselSection.addEventListener('mouseleave', startAutoScroll);
+            
+            // Pour les écrans tactiles, arrêter le défilement automatique au toucher
+            carouselSection.addEventListener('touchstart', stopAutoScroll);
+            carouselSection.addEventListener('touchend', startAutoScroll);
+            
+            // Démarrer le défilement automatique au chargement
+            startAutoScroll();
+            
+            // Mettre à jour l'année dans le copyright
+            const currentYearElement = document.getElementById('current-year');
+            currentYearElement.textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
