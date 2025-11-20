@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shikaku - Le jeu de stratégie ultime</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="app_icon.png">
+
 
     <style>
         /* RESET + BASE */
@@ -61,6 +63,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .logo-image {
+            width: 95%;
+            height: 95%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
 
         /* LAYOUT PRINCIPAL SUPER RESPONSIVE */
         .main-content {
@@ -216,7 +226,10 @@
 <div class="container">
     <header>
         <div class="logo">
-            <div class="logo-icon"><i class="fas fa-border-all"></i></div>
+            <div class="logo-icon">
+                <img src="app_icon.png" alt="App Icon" class="logo-image">
+            </div>
+
             <div class="logo-text">SHIKAKU</div>
         </div>
     </header>
