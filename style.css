@@ -13,7 +13,7 @@
             width: 100%;
             max-width: 1200px;
             margin: auto;
-            padding: 8px;
+            padding: 16px;
         }
 
         header {
@@ -203,4 +203,5 @@
             .carousel-section { height: 230px; }
             .slide-title { font-size: 1.05rem; }
             .carousel-slide { padding-top: 50px;  }
+            .container { padding: 10px; }
         }
