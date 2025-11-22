@@ -1,100 +1,98 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shikaku - Le jeu de stratégie ultime</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="app_icon.png">
-    <link rel="stylesheet" href="style.css">
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Shikaku - Le jeu de stratégie ultime</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <link rel="icon" type="image/png" href="app_icon.png">
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <div class="container">
+                <header>
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="app_icon.png" alt="App Icon" class="logo-image">
+                        </div>
 
-</head>
-<body>
+                        <div class="logo-text">SHIKAKU</div>
+                    </div>
+                </header>
 
-<div class="container">
-    <header>
-        <div class="logo">
-            <div class="logo-icon">
-                <img src="app_icon.png" alt="App Icon" class="logo-image">
+                <div class="main-content">
+                    <div class="text-section">
+                        <h2>OÙ LA STRATÉGIE RENCONTRE LA RAPIDITÉ</h2>
+                        <p class="subtitle">
+                            Shikaku est un jeu de stratégie où vous devez former des carrés en connectant les points.
+                            <span style="color:#00d4ff;font-weight:bold;">Affrontez l'IA, défiez vos amis</span> et devenez le maître !
+                        </p>
+
+                        <div class="features">
+                            <div class="feature"><i class="fas fa-robot"></i> IA (3 niveaux)</div>
+                            <div class="feature"><i class="fas fa-users"></i> Multijoueur</div>
+                            <div class="feature"><i class="fas fa-trophy"></i> Classement</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-section">
+                        <div class="carousel">
+                            <div class="carousel-slide">
+                                <div class="slide-icon">🎯</div>
+                                <h3 class="slide-title">OBJECTIF</h3>
+                                <p class="slide-content">Former le plus de carrés possible. Chaque carré vaut 1 point.</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="slide-icon">🔄</div>
+                                <h3 class="slide-title">TOUR PAR TOUR</h3>
+                                <p class="slide-content">Les joueurs placent un point chacun leur tour.</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="slide-icon">📐</div>
+                                <h3 class="slide-title">FORMATION</h3>
+                                <p class="slide-content">Un carré se forme lorsque 4 points créent une figure parfaite.</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="slide-icon">⭐</div>
+                                <h3 class="slide-title">SCORING</h3>
+                                <p class="slide-content">Plusieurs carrés d'un coup ? Vous marquez tout !</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="slide-icon">⏱️</div>
+                                <h3 class="slide-title">TIMER</h3>
+                                <p class="slide-content">15s par coup • 3min total • 3 tours manqués = défaite</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="slide-icon">🏆</div>
+                                <h3 class="slide-title">VICTOIRE</h3>
+                                <p class="slide-content">Le joueur avec le plus de points gagne.</p>
+                            </div>
+                        </div>
+
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+
+                        <div class="carousel-nav">
+                            <div class="nav-dot active"></div>
+                            <div class="nav-dot"></div>
+                            <div class="nav-dot"></div>
+                            <div class="nav-dot"></div>
+                            <div class="nav-dot"></div>
+                            <div class="nav-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <a href="shikaku.apk" download class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger l'app
+                    </a>
+                </div>
+
+                <footer>
+                    © <span id="current-year"></span> Équipe Shikaku — Tous droits réservés
+                </footer>
             </div>
-
-            <div class="logo-text">SHIKAKU</div>
-        </div>
-    </header>
-
-    <div class="main-content">
-        <div class="text-section">
-            <h2>OÙ LA STRATÉGIE RENCONTRE LA RAPIDITÉ</h2>
-            <p class="subtitle">
-                Shikaku est un jeu de stratégie où vous devez former des carrés en connectant les points.
-                <span style="color:#00d4ff;font-weight:bold;">Affrontez l'IA, défiez vos amis</span> et devenez le maître !
-            </p>
-
-            <div class="features">
-                <div class="feature"><i class="fas fa-robot"></i> IA (3 niveaux)</div>
-                <div class="feature"><i class="fas fa-users"></i> Multijoueur</div>
-                <div class="feature"><i class="fas fa-trophy"></i> Classement</div>
-            </div>
-        </div>
-
-        <div class="carousel-section">
-            <div class="carousel">
-                <div class="carousel-slide">
-                    <div class="slide-icon">🎯</div>
-                    <h3 class="slide-title">OBJECTIF</h3>
-                    <p class="slide-content">Former le plus de carrés possible. Chaque carré vaut 1 point.</p>
-                </div>
-                <div class="carousel-slide">
-                    <div class="slide-icon">🔄</div>
-                    <h3 class="slide-title">TOUR PAR TOUR</h3>
-                    <p class="slide-content">Les joueurs placent un point chacun leur tour.</p>
-                </div>
-                <div class="carousel-slide">
-                    <div class="slide-icon">📐</div>
-                    <h3 class="slide-title">FORMATION</h3>
-                    <p class="slide-content">Un carré se forme lorsque 4 points créent une figure parfaite.</p>
-                </div>
-                <div class="carousel-slide">
-                    <div class="slide-icon">⭐</div>
-                    <h3 class="slide-title">SCORING</h3>
-                    <p class="slide-content">Plusieurs carrés d'un coup ? Vous marquez tout !</p>
-                </div>
-                <div class="carousel-slide">
-                    <div class="slide-icon">⏱️</div>
-                    <h3 class="slide-title">TIMER</h3>
-                    <p class="slide-content">15s par coup • 3min total • 3 tours manqués = défaite</p>
-                </div>
-                <div class="carousel-slide">
-                    <div class="slide-icon">🏆</div>
-                    <h3 class="slide-title">VICTOIRE</h3>
-                    <p class="slide-content">Le joueur avec le plus de points gagne.</p>
-                </div>
-            </div>
-
-            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-
-            <div class="carousel-nav">
-                <div class="nav-dot active"></div>
-                <div class="nav-dot"></div>
-                <div class="nav-dot"></div>
-                <div class="nav-dot"></div>
-                <div class="nav-dot"></div>
-                <div class="nav-dot"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="download-section">
-        <a href="shikaku.apk" download class="download-btn">
-            <i class="fas fa-download"></i> Télécharger l'app
-        </a>
-    </div>
-
-    <footer>
-        © <span id="current-year"></span> Équipe Shikaku — Tous droits réservés
-    </footer>
-</div>
-<script src="script.js"></script>
-</body>
-</html>
+            <script src="script.js"></script>
+        </body>
+    </html>
